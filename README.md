@@ -56,6 +56,7 @@ course current category for easier navigation.
 ![Moodle coursemodstats form][product-screenshot-form]
 
 The plugin entry point link could be found in Moodle site administration block.
+
 ![Moodle coursemodstats admin link][product-screenshot-menu]
 
 ### Supported modules
