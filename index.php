@@ -18,7 +18,6 @@
  * Main public index file for coursemodstats report.
  *
  * @package    report_coursemodstats
- * @category   report
  * @copyright  2022 Andrej Vitez <contact@andrejvitez.com>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,7 +35,7 @@ $PAGE->set_context($context);
 
 require_capability('report/coursemodstats:view', $context);
 
-$title   = get_string('title', 'report_coursemodstats');
+$title = get_string('title', 'report_coursemodstats');
 $heading = get_string('heading', 'report_coursemodstats');
 
 $url = new moodle_url('/report/log/index.php');
@@ -59,7 +58,7 @@ if ($mform->is_cancelled()) {
     header("Content-Disposition: attachment; filename=report_course_stats.xlsx");
     header("Pragma: no-cache");
     header("Expires: 0");
-    $courselist     = empty($data->allcourses) ? $data->courses : null;
+    $courselist = empty($data->allcourses) ? $data->courses : null;
     $visiblecourses = !empty($data->onlyvisible_courses);
     $visiblemodules = !empty($data->onlyvisible_modules);
     echo report_coursemodstats_export_excel($courselist, $visiblecourses, $visiblemodules);

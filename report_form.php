@@ -18,7 +18,6 @@
  * Report form definition.
  *
  * @package    report_coursemodstats
- * @category   report
  * @copyright  2022 Andrej Vitez <contact@andrejvitez.com>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,33 +30,31 @@ require_once($CFG->dirroot . '/repository/lib.php');
 /**
  * Class report_form
  */
-class report_form extends moodleform
-{
-    public function definition()
-    {
+class report_form extends moodleform {
+    public function definition() {
         global $DB;
 
         $this->_form->addElement(
-            'static',
-            'info_guide',
-            '',
-            html_writer::tag(
-                'div',
-                get_string('form_intro', 'report_coursemodstats'),
-                ['class' => 'alert alert-info']
-            )
+                'static',
+                'info_guide',
+                '',
+                html_writer::tag(
+                        'div',
+                        get_string('form_intro', 'report_coursemodstats'),
+                        ['class' => 'alert alert-info']
+                )
         );
 
         $this->_form->addElement('static', 'filter_header', get_string('filter_section', 'report_coursemodstats'));
         $this->_form->addElement(
-            'checkbox',
-            'onlyvisible_modules',
-            get_string('select_only_visible_modules', 'report_coursemodstats')
+                'checkbox',
+                'onlyvisible_modules',
+                get_string('select_only_visible_modules', 'report_coursemodstats')
         );
         $this->_form->addElement(
-            'checkbox',
-            'onlyvisible_courses',
-            get_string('select_only_visible_courses', 'report_coursemodstats')
+                'checkbox',
+                'onlyvisible_courses',
+                get_string('select_only_visible_courses', 'report_coursemodstats')
         );
 
         $this->_form->addElement('checkbox', 'allcourses', get_string('select_all_courses', 'report_coursemodstats'));
@@ -65,11 +62,11 @@ class report_form extends moodleform
 
         $categories = $DB->get_records_menu('course', [], 'fullname ASC', 'id,fullname');
         $this->_form->addElement(
-            'select',
-            'courses',
-            get_string('report_form_select_courses', 'report_coursemodstats'),
-            $categories,
-            ['multiple' => 'multiple', 'size' => '25']
+                'select',
+                'courses',
+                get_string('report_form_select_courses', 'report_coursemodstats'),
+                $categories,
+                ['multiple' => 'multiple', 'size' => '25']
         );
 
         $this->_form->disabledIf('courses', 'allcourses', 'checked');

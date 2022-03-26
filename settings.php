@@ -18,7 +18,6 @@
  * Contains settings used by coursemodstats report.
  *
  * @package    report_coursemodstats
- * @category   report
  * @copyright  2022 Andrej Vitez <contact@andrejvitez.com>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,11 +26,11 @@ defined('MOODLE_INTERNAL') || die;
 
 // Just a link to course report.
 $ADMIN->add(
-    'reports',
-    new admin_externalpage(
-        'report_coursemodstats', get_string('admin_menu_item', 'report_coursemodstats'),
-        $CFG->wwwroot . "/report/coursemodstats/index.php", 'report/coursemodstats:view'
-    )
+        'reports',
+        new admin_externalpage(
+                'report_coursemodstats', get_string('admin_menu_item', 'report_coursemodstats'),
+                $CFG->wwwroot . "/report/coursemodstats/index.php", 'report/coursemodstats:view'
+        )
 );
 
 // No report settings.

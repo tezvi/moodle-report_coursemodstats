@@ -18,7 +18,6 @@
  * Contains code for postinstall routines.
  *
  * @package    report_coursemodstats
- * @category   report
  * @copyright  2022 Andrej Vitez <contact@andrejvitez.com>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +28,6 @@ defined('MOODLE_INTERNAL') || die;
  * Contains codes to be run during installation of report/coursemodstats
  *
  * @return void
- * @global moodle_database $DB
  */
 function xmldb_report_coursemodstats_install() {
     global $DB;

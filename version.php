@@ -18,15 +18,14 @@
  * Contains report plugin settings.
  *
  * @package    report_coursemodstats
- * @category   report
  * @copyright  2022 Andrej Vitez <contact@andrejvitez.com>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2022032601;    // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires = 2019111800;    // Requires this Moodle version 3.9
-$plugin->component = 'report_coursemodstats';  // Full name of the plugin (used for diagnostics)
+$plugin->version = 2022032601;    // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires = 2019111800;    // Requires this Moodle version 3.8.
+$plugin->component = 'report_coursemodstats';  // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = '1.0.';
