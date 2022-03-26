@@ -89,7 +89,7 @@ Checkout this project and open it with PHP suported IDE. You may use VSCode or P
 
 Please make sure that you are using php version 7.x and as a precaution backup your Moodle installation before installing this report plugin.
 
-This plugin requires 3rd party dependency `PhpOffice\PhpSpreadsheet` that is already bundled with Moodle version +3.9.
+This plugin requires 3rd party dependency `PhpOffice\PhpSpreadsheet` that is already bundled with Moodle version +3.8.
 
 ### Installation
 
