@@ -31,6 +31,11 @@ require_once($CFG->dirroot . '/repository/lib.php');
  * Class report_form
  */
 class report_form extends moodleform {
+    /**
+     * Creates and configures report form definition.
+     *
+     * @return void
+     */
     public function definition() {
         global $DB;
 

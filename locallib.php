@@ -36,6 +36,8 @@ global $CFG;
 require_once($CFG->dirroot . '/lib/phpspreadsheet/vendor/autoload.php');
 
 /**
+ * Returns report as excel binary content.
+ *
  * @param array|null $courselist An array of selected course IDs or null to include all courses in report.
  * @param bool $visiblecourses Whether to filter by visible courses.
  * @param bool $visiblemodules Whether to count only visible modules.
@@ -85,12 +87,12 @@ function report_coursemodstats_export_excel($courselist, $visiblecourses, $visib
     $writer = new Xlsx($spreadsheet);
 
     $columns = [
-            'fullname' => 'Course name',
-            'courseid' => 'Course ID',
-            'rootcategory' => 'Root category',
-            'category' => 'Category',
-            'modulename' => 'Module type',
-            'modulecount' => 'Instances',
+        'fullname' => 'Course name',
+        'courseid' => 'Course ID',
+        'rootcategory' => 'Root category',
+        'category' => 'Category',
+        'modulename' => 'Module type',
+        'modulecount' => 'Instances',
     ];
     $columnaccessors = array_keys($columns);
 
@@ -106,13 +108,13 @@ function report_coursemodstats_export_excel($courselist, $visiblecourses, $visib
 
     $style = $sheet->getStyle($headerrange);
     $style->getFill()
-            ->setFillType(Fill::FILL_SOLID)
-            ->getStartColor()
-            ->setARGB('dee6ef');
+        ->setFillType(Fill::FILL_SOLID)
+        ->getStartColor()
+        ->setARGB('dee6ef');
     $style->getBorders()
-            ->getBottom()
-            ->setBorderStyle(Border::BORDER_THIN)
-            ->setColor(new Color(Color::COLOR_BLACK));
+        ->getBottom()
+        ->setBorderStyle(Border::BORDER_THIN)
+        ->setColor(new Color(Color::COLOR_BLACK));
 
     // Render excel rows with course data.
     $rowidx = 2;
@@ -126,9 +128,9 @@ function report_coursemodstats_export_excel($courselist, $visiblecourses, $visib
     foreach ($records as $coursemodstats) {
         $rootcategory = report_coursemodstats_find_root_category($coursemodstats->category, $categories);
         $rowdata = array_merge((array) $coursemodstats, [
-                'rootcategory' => $rootcategory ? $rootcategory->name : '',
-                'modulename' => get_module_title($coursemodstats->modulename, $modulecache),
-                'category' => isset($categories[$coursemodstats->category]) ? $categories[$coursemodstats->category]->name : '',
+            'rootcategory' => $rootcategory ? $rootcategory->name : '',
+            'modulename' => get_module_title($coursemodstats->modulename, $modulecache),
+            'category' => isset($categories[$coursemodstats->category]) ? $categories[$coursemodstats->category]->name : '',
         ]);
 
         foreach ($columnaccessors as $columnidx => $column) {
@@ -143,13 +145,13 @@ function report_coursemodstats_export_excel($courselist, $visiblecourses, $visib
         if ($usestripes && $stripeenabled) {
             $style = $sheet->getStyle(sprintf('A%1$d:%2$s%1$d', $rowidx, $lastcolumn));
             $style->getFill()
-                    ->setFillType(Fill::FILL_SOLID)
-                    ->getStartColor()
-                    ->setARGB($stripecolor);
+                ->setFillType(Fill::FILL_SOLID)
+                ->getStartColor()
+                ->setARGB($stripecolor);
             $style->getBorders()
-                    ->getAllBorders()
-                    ->setBorderStyle(Border::BORDER_HAIR)
-                    ->setColor(new Color('cccccc'));
+                ->getAllBorders()
+                ->setBorderStyle(Border::BORDER_HAIR)
+                ->setColor(new Color('cccccc'));
         }
 
         $rowidx++;
@@ -189,7 +191,7 @@ function report_coursemodstats_get_categorytree() {
     global $DB;
 
     $categories = [
-            0 => (object) ['id' => 0, 'name' => get_site()->fullname, 'parent' => 0]
+        0 => (object) ['id' => 0, 'name' => get_site()->fullname, 'parent' => 0]
     ];
 
     foreach ($DB->get_records('course_categories', [], 'sortorder asc') as $category) {
